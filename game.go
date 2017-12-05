@@ -12,10 +12,10 @@ import (
 	"github.com/autovelop/playthos/std"
 
 	// Linux platform only
-	_ "github.com/autovelop/playthos/glfw"
-	_ "github.com/autovelop/playthos/glfw/keyboard"
-	_ "github.com/autovelop/playthos/openal"
-	_ "github.com/autovelop/playthos/opengl"
+	// _ "github.com/autovelop/playthos/glfw"
+	// _ "github.com/autovelop/playthos/glfw/keyboard"
+	// _ "github.com/autovelop/playthos/openal"
+	// _ "github.com/autovelop/playthos/opengl"
 	// Web platform only
 	_ "github.com/autovelop/playthos/platforms/web/audio"
 	_ "github.com/autovelop/playthos/platforms/web/keyboard"
