@@ -114,9 +114,9 @@ func main() {
 	})
 	cam.AddComponent(follow_cam)
 
-	// bg0_anim = background("assets/backgrounds0.png", 6000, 0)
-	// bg1_anim = background("assets/backgrounds1.png", 4000, 1)
-	// bg2_anim = background("assets/backgrounds2.png", 2000, 2)
+	bg0_anim = background("assets/backgrounds0.png", 6000, 0)
+	bg1_anim = background("assets/backgrounds1.png", 4000, 1)
+	bg2_anim = background("assets/backgrounds2.png", 2000, 2)
 
 	/*
 	 Create Player
@@ -166,18 +166,20 @@ func main() {
 	player.AddComponent(idleAnimation)
 
 	kb.On(keyboard.KeySpace, func(action ...int) {
-		switch action[0] {
-		case keyboard.ActionPress:
-			if ended {
-				restart()
-			} else {
-				if can_jump {
-					can_jump = false
-					player_rb.SetVelocity(player_rb.Velocity().X, 1, 0)
-					player_rb.SetMass(2.5)
+		go func() {
+			switch action[0] {
+			case keyboard.ActionPress:
+				if ended {
+					restart()
+				} else {
+					if can_jump {
+						can_jump = false
+						player_rb.SetVelocity(player_rb.Velocity().X, 1, 0)
+						player_rb.SetMass(2.5)
+					}
 				}
 			}
-		}
+		}()
 	})
 
 	ground()
@@ -258,9 +260,9 @@ func restart() {
 	player_rb.SetVelocity(0.4, 0, 0)
 	player_rb.SetActive(true)
 	ended = false
-	// bg0_anim.Start()
-	// bg1_anim.Start()
-	// bg2_anim.Start()
+	bg0_anim.Start()
+	bg1_anim.Start()
+	bg2_anim.Start()
 	idleAnimation.Start()
 }
 
@@ -298,9 +300,9 @@ func rocket(x float32) {
 		if other.Entity() == player {
 			ended = true
 			log.Printf("Your Score: %v", player_position.X)
-			// bg0_anim.Stop()
-			// bg1_anim.Stop()
-			// bg2_anim.Stop()
+			bg0_anim.Stop()
+			bg1_anim.Stop()
+			bg2_anim.Stop()
 			col.SetActive(false)
 			idleAnimation.Stop()
 			player_rb.SetActive(false)
@@ -357,9 +359,9 @@ func spike(x float32) {
 		if other.Entity() == player && !ended {
 			ended = true
 			log.Printf("Your Score: %v", player_position.X)
-			// bg0_anim.Stop()
-			// bg1_anim.Stop()
-			// bg2_anim.Stop()
+			bg0_anim.Stop()
+			bg1_anim.Stop()
+			bg2_anim.Stop()
 			col.SetActive(false)
 			idleAnimation.Stop()
 			player_rb.SetActive(false)
