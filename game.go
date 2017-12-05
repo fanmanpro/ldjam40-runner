@@ -12,14 +12,14 @@ import (
 	"github.com/autovelop/playthos/std"
 
 	// Linux platform only
-	//_ "github.com/autovelop/playthos/glfw"
-	//_ "github.com/autovelop/playthos/glfw/keyboard"
-	//_ "github.com/autovelop/playthos/openal"
-	//_ "github.com/autovelop/playthos/opengl"
+	_ "github.com/autovelop/playthos/glfw"
+	_ "github.com/autovelop/playthos/glfw/keyboard"
+	_ "github.com/autovelop/playthos/openal"
+	_ "github.com/autovelop/playthos/opengl"
 	// Web platform only
-	 _ "github.com/autovelop/playthos/platforms/web/audio"
-	 _ "github.com/autovelop/playthos/platforms/web/keyboard"
-	 _ "github.com/autovelop/playthos/webgl"
+	// _ "github.com/autovelop/playthos/platforms/web/audio"
+	// _ "github.com/autovelop/playthos/platforms/web/keyboard"
+	// _ "github.com/autovelop/playthos/webgl"
 
 	"log"
 	"math/rand"
@@ -90,7 +90,7 @@ func main() {
 
 	cam := game.NewEntity()
 	t := std.NewTransform()
-	camera_position = std.Vector3{0, 0, 3}
+	camera_position = std.Vector3{0, 0, 10}
 	camera_lookat = std.Vector3{0, 0, 0}
 	t.Set(
 		&camera_position,      // POSITION
