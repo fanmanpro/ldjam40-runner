@@ -90,7 +90,7 @@ func main() {
 
 	cam := game.NewEntity()
 	t := std.NewTransform()
-	camera_position = std.Vector3{0, 0, 10}
+	camera_position = std.Vector3{0, 0, 100}
 	camera_lookat = std.Vector3{0, 0, 0}
 	t.Set(
 		&camera_position,      // POSITION
@@ -119,7 +119,7 @@ func main() {
 	*/
 	player = game.NewEntity()
 	transform := std.NewTransform()
-	player_position = std.Vector3{0, -25 - 54, 3}
+	player_position = std.Vector3{0, -25 - 54, 80}
 	transform.Set(
 		&player_position,
 		&std.Vector3{0, 0, 0},
