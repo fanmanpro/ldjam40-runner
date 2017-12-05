@@ -12,10 +12,10 @@ import (
 	"github.com/autovelop/playthos/std"
 
 	// Linux platform only
-	// _ "github.com/autovelop/playthos/glfw"
-	// _ "github.com/autovelop/playthos/glfw/keyboard"
-	// _ "github.com/autovelop/playthos/openal"
-	// _ "github.com/autovelop/playthos/opengl"
+	_ "github.com/autovelop/playthos/glfw"
+	_ "github.com/autovelop/playthos/glfw/keyboard"
+	_ "github.com/autovelop/playthos/openal"
+	_ "github.com/autovelop/playthos/opengl"
 	// Web platform only
 	_ "github.com/autovelop/playthos/platforms/web/audio"
 	_ "github.com/autovelop/playthos/platforms/web/keyboard"
@@ -114,6 +114,10 @@ func main() {
 	})
 	cam.AddComponent(follow_cam)
 
+	// bg0_anim = background("assets/backgrounds0.png", 6000, 0)
+	// bg1_anim = background("assets/backgrounds1.png", 4000, 1)
+	// bg2_anim = background("assets/backgrounds2.png", 2000, 2)
+
 	/*
 	 Create Player
 	*/
@@ -178,9 +182,6 @@ func main() {
 
 	ground()
 	instructions()
-	bg0_anim = background("assets/backgrounds0.png", 6000, 0)
-	bg1_anim = background("assets/backgrounds1.png", 4000, 1)
-	bg2_anim = background("assets/backgrounds2.png", 2000, 2)
 
 	// Spawner
 	spike_list = make([]*engine.Entity, 0)
@@ -257,9 +258,9 @@ func restart() {
 	player_rb.SetVelocity(0.4, 0, 0)
 	player_rb.SetActive(true)
 	ended = false
-	bg0_anim.Start()
-	bg1_anim.Start()
-	bg2_anim.Start()
+	// bg0_anim.Start()
+	// bg1_anim.Start()
+	// bg2_anim.Start()
 	idleAnimation.Start()
 }
 
@@ -297,9 +298,10 @@ func rocket(x float32) {
 		if other.Entity() == player {
 			ended = true
 			log.Printf("Your Score: %v", player_position.X)
-			bg0_anim.Stop()
-			bg1_anim.Stop()
-			bg2_anim.Stop()
+			// bg0_anim.Stop()
+			// bg1_anim.Stop()
+			// bg2_anim.Stop()
+			col.SetActive(false)
 			idleAnimation.Stop()
 			player_rb.SetActive(false)
 		}
@@ -324,7 +326,7 @@ func spike(x float32) {
 	// Ground
 	spike := game.NewEntity()
 	transform := std.NewTransform()
-	position := std.Vector3{x, -28 - 54, 3}
+	position := std.Vector3{x, -28 - 54, 10}
 	transform.Set(
 		&position,
 		&std.Vector3{0, 0, 0},
@@ -355,9 +357,10 @@ func spike(x float32) {
 		if other.Entity() == player && !ended {
 			ended = true
 			log.Printf("Your Score: %v", player_position.X)
-			bg0_anim.Stop()
-			bg1_anim.Stop()
-			bg2_anim.Stop()
+			// bg0_anim.Stop()
+			// bg1_anim.Stop()
+			// bg2_anim.Stop()
+			col.SetActive(false)
 			idleAnimation.Stop()
 			player_rb.SetActive(false)
 		}
