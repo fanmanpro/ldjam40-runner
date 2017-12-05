@@ -12,14 +12,14 @@ import (
 	"github.com/autovelop/playthos/std"
 
 	// Linux platform only
-	// _ "github.com/autovelop/playthos/glfw"
-	// _ "github.com/autovelop/playthos/glfw/keyboard"
-	// _ "github.com/autovelop/playthos/openal"
-	// _ "github.com/autovelop/playthos/opengl"
+	_ "github.com/autovelop/playthos/glfw"
+	_ "github.com/autovelop/playthos/glfw/keyboard"
+	_ "github.com/autovelop/playthos/openal"
+	_ "github.com/autovelop/playthos/opengl"
 	// Web platform only
-	_ "github.com/autovelop/playthos/platforms/web/audio"
-	_ "github.com/autovelop/playthos/platforms/web/keyboard"
-	_ "github.com/autovelop/playthos/webgl"
+	// _ "github.com/autovelop/playthos/platforms/web/audio"
+	// _ "github.com/autovelop/playthos/platforms/web/keyboard"
+	// _ "github.com/autovelop/playthos/webgl"
 
 	"log"
 	"math/rand"
@@ -100,7 +100,7 @@ func main() {
 	cam.AddComponent(t)
 
 	camera := render.NewCamera()
-	cameraSize := float32(3.5)
+	cameraSize := float32(4)
 	camera.Set(&cameraSize, &std.Color{0.1, 0.1, 0.1, 0})
 	camera.SetTransform(t)
 
@@ -179,8 +179,8 @@ func main() {
 	ground()
 	instructions()
 	bg0_anim = background("assets/backgrounds0.png", 6000, 0)
-	bg1_anim = background("assets/backgrounds1.png", 4000, 0.1)
-	bg2_anim = background("assets/backgrounds2.png", 2000, 0.2)
+	bg1_anim = background("assets/backgrounds1.png", 4000, 1)
+	bg2_anim = background("assets/backgrounds2.png", 2000, 2)
 
 	// Spawner
 	spike_list = make([]*engine.Entity, 0)
