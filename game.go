@@ -54,6 +54,7 @@ var idleAnimation *animation.AnimationClip
 
 func main() {
 	engine.RegisterAsset("assets/player.png")
+	engine.RegisterAsset("assets/rocket.png")
 	engine.RegisterAsset("assets/spike.png")
 	engine.RegisterAsset("assets/instructions.png")
 	engine.RegisterAsset("assets/backgrounds0.png")
@@ -99,7 +100,7 @@ func main() {
 	cam.AddComponent(t)
 
 	camera := render.NewCamera()
-	cameraSize := float32(4)
+	cameraSize := float32(3.5)
 	camera.Set(&cameraSize, &std.Color{0.1, 0.1, 0.1, 0})
 	camera.SetTransform(t)
 
